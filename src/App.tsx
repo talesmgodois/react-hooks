@@ -2,15 +2,6 @@ import * as React from "react";
 import "./styles.css";
 
 export default function App() {
-  React.useEffect(() => {
-    document.title = `you clicked ${state.count}`;
-    // window.addEventListener("mousemove", setMousePosition);
-
-    // return () => {
-    //   window.removeEventListener("mousemove", setMousePosition);
-    // };
-  });
-
   const [state, setState] = React.useState({
     name: "Shi",
     count: 0,
@@ -18,6 +9,15 @@ export default function App() {
       x: null,
       y: null
     }
+  });
+
+  React.useEffect(() => {
+    document.title = `you clicked ${state.count}`;
+    window.addEventListener("mousemove", setMousePosition);
+
+    return () => {
+      window.removeEventListener("mousemove", setMousePosition);
+    };
   });
 
   const { count, name } = state;
